@@ -1,0 +1,94 @@
+
+what is working tree?
+
+The Working Tree in Git is a directory (and its files and subdirectories) on your file system that is associated with a repository.
+
+It's full of the files you edit, where you add new files, and from which you remove unneeded files. Any changes to the Working Tree are noted by the Index, and show up as modified files.
+
+
+
+what is staging?
+
+A staging step in git allows you to continue making changes to the working directory, and when you decide you wanna interact with version control, it allows you to record changes in small commits.
+
+Suppose you have edited three files (a.html, b.html, and c.html). After that you need to commit all the changes so that the changes to a.html and b.html were a single commit, while the changes to c.html were not logically associated with the first two files and were done in a separate commit.
+
+
+What is HEAD?
+
+With the first commit we make, the master pointer will be created automatically, pointing to this commit.
+
+In each new commit the value contained in the master pointer will change, by the identifier of the following commit.
+
+The master branch is like any other branch. It is special because it is the default branch, but in everything else it is the same as any other branch.
+
+When we create a new branch (git branch new_rama), a new pointer will be created, containing the identifier of the current commit. Creating a branch does not imply being in it. (eye, you have to jump to it, to start moving on the new branch)
+
+And this is where the external HEAD pointer comes into play (it is like a headlight), this pointer serves GIT to know which branch we are in at each moment.
+
+Then HEAD contains the identifier of the current branch, which in turn contains the identifier of the last commit made in the branch.
+
+HEAD POINTS BRANCH WHERE WE ARE, AND EVERY TIME WE CHANGED FROM RAMA HEAD CHANGES ITS VALUE.
+
+HEAD: Contains a reference to the most recent commit of the current branch (in most cases)
+
+When we make a jump to a specific commit (which is not the last one where it points head), we enter a state called “detached head state”, which indicates that the HEAD pointer does not contain the identifier of the last commit of the branch where we are (it will contain the id of the commit where we made the checkout and not the path ref: refs / heads / branch).
+
+what is branch?
+
+The branches are one of the main utilities that we have in Git to keep a better control of the code. It is a bifurcation of the status of the code that creates a new path for the evolution of the code, in parallel to other branches that can be generated. In this article, we review what Git branches are for and how we can work with them on a project.
+
+
+The branches can serve us for many use cases. For example, for the creation of a functionality that we want to integrate into a program and for which we do not want the main branch to be affected. This experimental function can be performed in an independent branch, so that, although it takes several days or weeks to complete it, it does not affect the production of the code that we have in the main branch and that will remain stable.
+
+Working with branches is very comfortable in the development of projects, because it is possible that all the branches created evolve at the same time, and the developer can move from one branch to another at any time according to the needs of the project. If at any given time the work with a branch has been interesting, useful and stable, then we can merge branches to incorporate the modifications of the project in its main branch.
+
+what is a branch modeling?
+
+Workflow branch
+Let's take a look at the Gitflow workflow as described in A successful Git branching model.
+
+This workflow consists of five types of branches, each with different roles:
+
+Teacher
+Feature branch (also known as theme branch)
+Free branch
+Review Branch
+Develop branch (also known as integration branch)
+
+Teacher
+When performing the first confirmation in a repository, Git will automatically create a master branch by default. Subsequent confirmations will go under the master branch until you decide to create and change to another branch.
+
+The code base that resides in the master branch is considered ready for production. When you are ready for a specific version, the last confirmation will receive a launch tag.
+
+Feature / topic branch
+When you start working on a new function / error correction, you must create a function / theme branch. A feature / theme branch is usually created from a development / integration branch. This function / theme branch can reside on your local machine throughout the function development life cycle.
+
+You will push this branch to the remote repository when you are ready to merge the changeset with the development / integration branch.
+
+Free branch
+When you implement a new version, you create a launching branch. A launching branch helps you ensure that the new functions are executed correctly.
+
+By convention, the names of the launching branches usually begin with the prefix "release-".
+
+The launching branch is usually created from the development / integration branch when it is close to being ready for production.
+
+Only bug fixes and version related issues should be addressed in this branch. Having this branch will allow other team members to continue driving new features to the development / integration branch without interrupting the launch workflow.
+
+When you are ready to launch, combine the launch branch with the master branch and label a launch number for the newly created merge confirmation.
+
+You must also merge the launching branch with the development / integration branch so that the master and development / integration branches receive the latest changes / bug fixes from the launching branch.
+
+Review Branch
+When you need to add an important solution to your production code base quickly, you can create a Hotfix branch outside the master branch.
+
+By convention, revision branch names usually begin with the prefix "revision-".
+
+The advantage of a review branch is that it allows you to quickly issue a patch and merge the change with the master branch without having to wait for the next version.
+
+A review branch must also be merged with the development / integration branch.
+
+Development / Integration Branch
+A development / integration branch must remain stable at all times. This is important because new branches are created from this branch, and this branch could eventually go live in production. Continuous integration tools like Jenkins can be used to help do just that.
+
+When it is necessary to merge some changes in the development / integration branch, it is generally a good idea to create a branch of features / themes to work independently.
